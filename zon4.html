@@ -3,173 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Percarian Kata: Anti-Buli</title>
+    <title>Zon 4: Katakan Tidak pada Siber Buli</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: linear-gradient(to right, #4facfe, #00f2fe);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: white;
             text-align: center;
             padding: 20px;
+            margin: 0;
         }
-        .game-container {
-            background: rgba(0, 0, 0, 0.6);
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .gallery img {
+            width: 100%;
+            max-width: 400px;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            max-width: 800px;
-            display: inline-block;
+            margin: 10px;
         }
-        #word-search-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 40px);
-            gap: 2px;
-            justify-content: center;
-            margin: 20px auto;
-        }
-        .grid-cell {
-            width: 40px;
-            height: 40px;
-            color: black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #000;
+        .hashtag {
+            margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
-            cursor: pointer;
-            background-color: white;
-            transition: background 0.3s;
-            border-radius: 5px;
         }
-        .selected {
-            background-color: yellow;
+        .declaration-form {
+            margin-top: 20px;
         }
-        .found {
-            background-color: lightgreen;
-        }
-        .reset-button {
-            background-color: #007BFF;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .reset-button:hover {
-            background-color: #0056b3;
-        }
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: center;
-            padding: 8px;
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .space{
+        input, button {
             padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background: #ffcc00;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #ffaa00;
+        }
+        .wall-of-hope {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
         }
     </style>
-</head>
-<body>
-    <div class="game-container">
-        <h1>Percarian Kata: Anti-Buli</h1>
-        <p>Cari dan pilih perkataan berkaitan anti-buli dalam kotak ini.</p>
-        <div id="word-search-grid"></div>
-        <table>
-            <tr>
-                <th colspan="5">Senarai Perkataan</th>
-            </tr>
-            <tr>
-                <td>BULI</td>
-                <td>PRIHATIN</td>
-                <td>LAPORAN</td>
-                <td>PEMBULI</td>
-                <td>TOLERANSI</td>
-            </tr>
-            <tr>
-                <td>TAKUT</td>
-                <td>SEKOLAH</td>
-                <td>SIBERBULI</td>
-                <td>EMPATI</td>
-                <td>JAHAT</td>
-            </tr>
-        </table>
-        <div class="space"></div>
-        <button class="reset-button" onclick="resetGame()">Reset Permainan</button>
-    </div>
-
     <script>
-        const words = ["BULI", "PRIHATIN", "LAPORAN", "PEMBULI", "TOLERANSI", "TAKUT", "SEKOLAH", "SIBERBULI", "EMPATI", "JAHAT"];
-        const gridData = [
-            "TOLERANSIMRK",
-            "OPFDJAHATYNB",
-            "JRGKRGTIGROG",
-            "CIBLAPORANQN",
-            "QHEAPEMBULIN",
-            "RAKMLCJAFWMY",
-            "LTPBPSEKOLAH",
-            "TINHUAGTEMUB",
-            "ANEABLTSJCXV",
-            "KVEONQIINMGS",
-            "UPIPHPYPOYHM",
-            "TQMSIBERBULI"
-        ];
-
-        const gridElement = document.getElementById("word-search-grid");
-        let selectedCells = [];
-
-        gridData.forEach((row, rowIndex) => {
-            row.split("").forEach((letter, colIndex) => {
-                const cell = document.createElement("div");
-                cell.classList.add("grid-cell");
-                cell.textContent = letter;
-                cell.dataset.row = rowIndex;
-                cell.dataset.col = colIndex;
-                cell.addEventListener("click", () => selectCell(cell));
-                gridElement.appendChild(cell);
-            });
-        });
-
-        function selectCell(cell) {
-            if (cell.classList.contains("found")) return;
-            cell.classList.toggle("selected");
-            if (cell.classList.contains("selected")) {
-                selectedCells.push(cell);
-            } else {
-                selectedCells = selectedCells.filter(c => c !== cell);
+        function addMessage() {
+            let message = document.getElementById("message").value;
+            if (message.trim() !== "") {
+                let wall = document.getElementById("wall");
+                let newMessage = document.createElement("p");
+                newMessage.textContent = message;
+                wall.appendChild(newMessage);
+                document.getElementById("message").value = "";
             }
-            checkWord();
-        }
-
-        function checkWord() {
-            let selectedWord = selectedCells.map(cell => cell.textContent).join("");
-            if (words.includes(selectedWord)) {
-                selectedCells.forEach(cell => cell.classList.add("found"));
-                selectedCells = [];
-            }
-        }
-
-        function resetGame() {
-            document.querySelectorAll(".grid-cell").forEach(cell => {
-                cell.classList.remove("selected", "found");
-            });
-            selectedCells = [];
         }
     </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Zon 4: Katakan Tidak pada Siber Buli</h1>
+        <h2>Galeri Kreatif Maya</h2>
+        <div class="gallery">
+            <img src="images/poster1.jpg" alt="Poster Anti-Buli">
+            <img src="images/poster2.jpg" alt="Poster Anti-Buli">
+        </div>
+        <h2>Kempen Hashtag Maya</h2>
+        <p class="hashtag">Gunakan hashtag: <strong>#KlikBijak</strong> atau <strong>#SayNoToCyberBullying</strong></p>
+        <h2>Deklarasi Digital</h2>
+        <p>Tulis langkah positif yang anda akan ambil untuk mengelakkan buli:</p>
+        <div class="declaration-form">
+            <input type="text" id="message" placeholder="Saya akan...">
+            <button onclick="addMessage()">Hantar</button>
+        </div>
+        <div class="wall-of-hope" id="wall">
+            <h3>Dinding Harapan Maya</h3>
+        </div>
+    </div>
 </body>
 </html>
