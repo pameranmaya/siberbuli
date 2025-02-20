@@ -16,37 +16,58 @@
         .container {
             max-width: 900px;
             margin: auto;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
             border-radius: 15px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .support-list {
             text-align: left;
             padding: 10px;
         }
         .support-item {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 15px;
             border-radius: 10px;
             margin-bottom: 15px;
+            transition: transform 0.3s ease-in-out;
         }
-        .qr-code {
-            margin: 20px 0;
+        .support-item:hover {
+            transform: scale(1.05);
+        }
+        .qr-code img {
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         }
         .video-container {
             margin: 20px 0;
         }
         .certificate {
             background: #ffcc00;
-            padding: 15px;
+            padding: 15px 20px;
             border-radius: 10px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
+            transition: background 0.3s;
+            border: none;
         }
         .certificate:hover {
             background: #ffaa00;
+        }
+        a {
+            color: #ffcc00;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -73,9 +94,9 @@
             </div>
         </div>
         <h2>5 Langkah Jika Anda Menjadi Mangsa Siber Buli</h2>
-        <p>1. Jangan berbalas komen.<br>2. Simpan bukti tangkap layar.<br>3. Laporkan kepada pihak berkuasa.<br>4. Beritahu orang dewasa yang dipercayai.<br>5. Hubungi talian bantuan.</p>
+        <p>✅ Jangan berbalas komen.<br>✅ Simpan bukti tangkap layar.<br>✅ Laporkan kepada pihak berkuasa.<br>✅ Beritahu orang dewasa yang dipercayai.<br>✅ Hubungi talian bantuan.</p>
         <div class="qr-code">
-            <img src="images/qrcode.png" alt="QR Code untuk panduan tindakan" width="200">
+            <img src="images/qrcode.png" alt="QR Code untuk panduan tindakan">
         </div>
         <h2>Video Motivasi - Shasya Ali</h2>
         <div class="video-container">
@@ -87,7 +108,7 @@
         <h2>Sijil Digital Penyertaan</h2>
         <button class="certificate">Dapatkan Sijil Anda</button>
         <h2>Penutup Pameran</h2>
-        <p>Terus sebarkan mesej positif di media sosial!</p>
+        <p>Terus sebarkan mesej positif di media sosial! 💙</p>
     </div>
 </body>
 </html>
