@@ -92,22 +92,42 @@
             border-radius: 5px;
             border: none;
         }
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+        }
     </style>
     <script>
         let score = 0;
         let totalQuestions = 5;
 
+        function showNotification(message) {
+            let notification = document.getElementById("notification");
+            notification.textContent = message;
+            notification.style.display = "block";
+            setTimeout(() => {
+                notification.style.display = "none";
+            }, 2000);
+        }
+
         function checkAnswer(isCorrect) {
             if (isCorrect) {
                 score++;
-                alert("Betul!");
+                showNotification("Betul!");
             } else {
-                alert("Salah!");
+                showNotification("Salah!");
             }
 
             if (document.querySelectorAll('.quiz-btn[disabled]').length === totalQuestions - 1) {
                 let percentage = (score / totalQuestions) * 100;
-                alert(`Anda mendapat ${percentage}% markah!`);
+                showNotification(`Anda mendapat ${percentage}% markah!`);
             }
         }
     </script>
@@ -170,5 +190,6 @@
             <button class="quiz-btn" onclick="checkAnswer(false)">Tidak</button>
         </div>
     </div>
+    <div id="notification" class="notification"></div>
 </body>
 </html>
