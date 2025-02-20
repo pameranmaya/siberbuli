@@ -149,6 +149,12 @@
             .section {
                 padding: 15px;
             }
+            .section p {
+                font-size: 15px;
+            }
+            .section h2{
+                font-size: 24px;
+            }
             .menu a {
                 font-size: 16px;
             }
@@ -158,12 +164,25 @@
             .container p {
                 font-size: 16px;
             }
+
+            img {
+            width: 70%;
+            border-radius: 10px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            animation: bounce 1.5s infinite;
+            }
         }
 
         @media screen and (max-width: 480px) {
             .menu-button, .audio-button {
                 padding: 6px 10px;
                 font-size: 12px;
+            }
+            .section p {
+                font-size: 14px;
+            }
+            .section h2{
+                font-size: 20px;
             }
             .menu a {
                 font-size: 14px;
@@ -173,6 +192,12 @@
             }
             .container p {
                 font-size: 14px;
+            }
+            img {
+            width: 70%;
+            border-radius: 10px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            animation: bounce 1.5s infinite;
             }
         }
     </style>
