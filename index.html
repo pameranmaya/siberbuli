@@ -62,8 +62,8 @@
             padding: 20px;
             border-radius: 0px;
             margin: 10px auto;
-            width: 60%;
-            max-width: 60%;
+            width: 95%;
+            max-width: 95%;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         }
         .section a {
@@ -140,8 +140,44 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        @media screen and (max-width: 768px) {
+            .menu-button, .audio-button {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+            .section {
+                padding: 15px;
+            }
+            .menu a {
+                font-size: 16px;
+            }
+            .container h1 {
+                font-size: 24px;
+            }
+            .container p {
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .menu-button, .audio-button {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+            .menu a {
+                font-size: 14px;
+            }
+            .container h1 {
+                font-size: 20px;
+            }
+            .container p {
+                font-size: 14px;
+            }
+        }
     </style>
 
+    <br>
     <br>
     <h1>Pameran Maya: "Klik Bijak, Dunia Siber Tanpa Buli"</h1>
     <p>"Satu klik boleh menyelamatkan atau melukai. Pilihlah bijak!"</p>
