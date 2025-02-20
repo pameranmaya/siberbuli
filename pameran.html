@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Stock Tracking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        .user-type {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .user-type button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+        .dashboard, .form {
+            display: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        .summary {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Book Stock Tracking System</h1>
+    </header>
+
+    <div class="container">
+        <div class="user-type">
+            <button id="part-timer-btn">Part Timer</button>
+            <button id="management-btn">Management</button>
+        </div>
+
+        <!-- Part Timer Form -->
+        <div id="part-timer-form" class="form">
+            <h2>Part Timer</h2>
+            <form id="part-timer">
+                <label for="school-name">School Name:</label><br>
+                <input type="text" id="school-name" name="school-name" required><br><br>
+
+                <label for="book-title">Book Title:</label><br>
+                <input type="text" id="book-title" name="book-title" required><br><br>
+
+                <label for="start-stock">Start Stock:</label><br>
+                <input type="number" id="start-stock" name="start-stock" required><br><br>
+
+                <label for="end-stock">End Stock:</label><br>
+                <input type="number" id="end-stock" name="end-stock" required><br><br>
+
+                <label for="donation">Book Donation (RM):</label><br>
+                <input type="number" id="donation" name="donation" required><br><br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Management Dashboard -->
+        <div id="management-dashboard" class="dashboard">
+            <h2>Management Dashboard</h2>
+
+            <button id="add-book-btn">Add Book</button>
+            <button id="delete-book-btn">Delete Book</button>
+
+            <form id="add-book-form" style="display:none; margin-top: 20px;">
+                <label for="new-book-title">New Book Title:</label><br>
+                <input type="text" id="new-book-title" name="new-book-title" required><br><br>
+                <button type="button" id="submit-new-book">Add Book</button>
+            </form>
+
+            <form id="delete-book-form" style="display:none; margin-top: 20px;">
+                <label for="book-to-delete">Book Title to Delete:</label><br>
+                <input type="text" id="book-to-delete" name="book-to-delete" required><br><br>
+                <button type="button" id="submit-delete-book">Delete Book</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>School Name</th>
+                        <th>Book Title</th>
+                        <th>Sold Copies</th>
+                        <th>Current Stock</th>
+                        <th>Total Donation (RM)</th>
+                    </tr>
+                </thead>
+                <tbody id="dashboard-data">
+                    <!-- Rows will be dynamically added here -->
+                </tbody>
+            </table>
+
+            <div class="summary">
+                <h3>Summary</h3>
+                <p>Total Books Donated (RM): <span id="total-donation">0</span></p>
+                <p>Most Popular Book: <span id="popular-book">N/A</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const partTimerBtn = document.getElementById("part-timer-btn");
+        const managementBtn = document.getElementById("management-btn");
+        const partTimerForm = document.getElementById("part-timer-form");
+        const managementDashboard = document.getElementById("management-dashboard");
+        const addBookBtn = document.getElementById("add-book-btn");
+        const deleteBookBtn = document.getElementById("delete-book-btn");
+        const addBookForm = document.getElementById("add-book-form");
+        const deleteBookForm = document.getElementById("delete-book-form");
+        const dashboardData = document.getElementById("dashboard-data");
+        const totalDonationElement = document.getElementById("total-donation");
+        const popularBookElement = document.getElementById("popular-book");
+
+        let data = []; // Array to store part-timer input data
+        let books = []; // Array to store list of books
+
+        partTimerBtn.addEventListener("click", () => {
+            partTimerForm.style.display = "block";
+            managementDashboard.style.display = "none";
+        });
+
+        managementBtn.addEventListener("click", () => {
+            partTimerForm.style.display = "none";
+            managementDashboard.style.display = "block";
+            updateDashboard();
+        });
+
+        addBookBtn.addEventListener("click", () => {
+            addBookForm.style.display = "block";
+            deleteBookForm.style.display = "none";
+        });
+
+        deleteBookBtn.addEventListener("click", () => {
+            deleteBookForm.style.display = "block";
+            addBookForm.style.display = "none";
+        });
+
+        document.getElementById("part-timer").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const schoolName = document.getElementById("school-name").value;
+            const bookTitle = document.getElementById("book-title").value;
+            const startStock = parseInt(document.getElementById("start-stock").value);
+            const endStock = parseInt(document.getElementById("end-stock").value);
+            const donation = parseFloat(document.getElementById("donation").value);
+
+            const soldBooks = startStock - endStock;
+
+            data.push({ schoolName, bookTitle, soldBooks, donation });
+
+            alert("Data saved successfully!");
+            document.getElementById("part-timer").reset();
+        });
+
+        document.getElementById("submit-new-book").addEventListener("click", () => {
+            const newBookTitle = document.getElementById("new-book-title").value;
+            if (!books.includes(newBookTitle)) {
+                books.push(newBookTitle);
+                alert("Book added successfully!");
+            } else {
+                alert("Book already exists!");
+            }
+            document.getElementById("add-book-form").reset();
+        });
+
+        document.getElementById("submit-delete-book").addEventListener("click", () => {
+            const bookToDelete = document.getElementById("book-to-delete").value;
+            const index = books.indexOf(bookToDelete);
+            if (index !== -1) {
+                books.splice(index, 1);
+                alert("Book deleted successfully!");
+            } else {
+                alert("Book not found!");
+            }
+            document.getElementById("delete-book-form").reset();
+        });
+
+        function updateDashboard() {
+            dashboardData.innerHTML = ""; // Clear previous data
+            let totalDonation = 0;
+            let bookSales = {};
+
+            data.forEach((entry) => {
+                totalDonation += entry.donation;
+
+                if (!bookSales[entry.bookTitle]) {
+                    bookSales[entry.bookTitle] = 0;
+                }
+                bookSales[entry.bookTitle] += entry.soldBooks;
+
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${entry.schoolName}</td>
+                    <td>${entry.bookTitle}</td>
+                    <td>${entry.soldBooks}</td>
+                    <td>${entry.soldBooks}</td>
+                    <td>${entry.donation}</td>
+                `;
+                dashboardData.appendChild(row);
+            });
+
+            totalDonationElement.textContent = totalDonation.toFixed(2);
+
+            let mostPopularBook = "N/A";
+            let maxSales = 0;
+            for (const book in bookSales) {
+                if (bookSales[book] > maxSales) {
+                    maxSales = bookSales[book];
+                    mostPopularBook = book;
+                }
+            }
+            popularBookElement.textContent = mostPopularBook;
+        }
+    </script>
+</body>
+</html>

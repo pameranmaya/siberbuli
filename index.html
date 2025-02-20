@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pameran Maya Buli Siber</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let consent = localStorage.getItem("cookieConsent");
+            if (!consent) {
+                document.getElementById("cookie-popup").style.display = "block";
+            }
+        });
+
+        function setCookieConsent(agree) {
+            if (agree) {
+                localStorage.setItem("cookieConsent", "true");
+                document.getElementById("cookie-popup").style.display = "none";
+            } else {
+                window.history.back();
+            }
+        }
+        function toggleMenu() {
+            document.getElementById("menu").classList.toggle("active");
+        }
+
+        function toggleAudio() {
+            let audio = document.getElementById("bg-music");
+            let icon = document.getElementById("audio-icon");
+            if (audio.paused) {
+                audio.play();
+                icon.textContent = "🔊";
+            } else {
+                audio.pause();
+                icon.textContent = "🔇";
+            }
+        }
+    </script>
+    <style>
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: white;
+            text-align: center;
+        }
+
+        .p{
+            text-shadow: 5px 5px;
+        }
+
+        .section {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 0px;
+            margin: 10px auto;
+            width: 98%;
+            max-width: 98%;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .section a {
+            color: #ff4081;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .section a:hover {
+            text-decoration: underline;
+        }
+        .cookie-popup {
+            display: none;
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .cookie-popup button {
+            margin: 5px;
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        img {
+            width: 50%;
+            border-radius: 10px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            animation: bounce 1.5s infinite;
+        }
+
+        .menu-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #ff4081;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .menu.active {
+            display: block;
+        }
+
+        .menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 5px;
+        }
+
+        .audio-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ffcc00;
+            color: black;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+
+    <br>
+    <h1>Pameran Maya: "Klik Bijak, Dunia Siber Tanpa Buli"</h1>
+    <p>"Satu klik boleh menyelamatkan atau melukai. Pilihlah bijak!"</p>
+    <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    <br>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    <br>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    <br> -->
+</head>
+<body>
+    <div id="cookie-popup" class="cookie-popup">
+        <p>Laman web ini menggunakan cookies untuk pengalaman terbaik. Setuju?</p>
+        <button onclick="setCookieConsent(true)" style="background: green; color: white;">Setuju</button>
+        <button onclick="setCookieConsent(false)" style="background: red; color: white;">Tidak Setuju</button>
+    </div>
+
+    <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
+    <div id="menu" class="menu">
+        <a href="#zon1">Zon 1: Apa Itu Siber Buli?</a>
+        <a href="#zon2">Zon 2: Kesan Siber Buli</a>
+        <a href="#zon3">Zon 3: Cara Melindungi Diri</a>
+        <a href="#zon4">Zon 4: Katakan Tidak pada Siber Buli</a>
+        <a href="#zon5">Zon 5: Sokongan dan Bantuan</a>
+    </div>
+
+    <button class="audio-button" onclick="toggleAudio()" id="audio-icon">🔇</button>
+    <audio id="bg-music" loop>
+        <source src="audio/bg1.mp3" type="audio/mpeg">
+    </audio>
+
+    <img src="image/z1n1.webp" id="zon1">
+    <div class="section">
+        <h2>Zon 1: Apa Itu Siber Buli?</h2>
+        <p>Penerangan ringkas mengenai buli siber dan bentuknya.</p>
+        <a href="zon1.html">Tekan sini untuk tau lebih lanjut tentang siber buli</a>
+    </div>
+    
+    <img src="image/z2n1.webp" id="zon2">
+    <div class="section">
+        <h2>Kesan Siber Buli</h2>
+        <p>Zon 2: Bagaimana buli siber memberi kesan kepada mangsa?</p>
+        <a href="zon2.html">Tekan sini untuk tau lebih lanjut tentang kesan siber buli</a>
+    </div>
+    
+    <img src="image/z3n1.jpeg" id="zon3">
+    <div class="section">
+        <h2>Zon 3: Cara Melindungi Diri</h2>
+        <p>Langkah-langkah yang boleh diambil untuk mencegah buli siber.</p>
+        <a href="zon3.html">Tekan sini untuk tau lebih lanjut tentang cara melindungi diri</a>
+    </div>
+    
+    <img src="image/z3na.jpg" id="zon4">
+    <div class="section">
+        <h2>Zon 4: Katakan Tidak pada Siber Buli</h2>
+        <p>Menggalakkan kesedaran dan tindakan untuk membanteras buli siber.</p>
+        <a href="zon4.html">Tekan sini untuk tau lebih lanjut tentang katakan tidak pada siber buli</a>
+    </div>
+    
+    <img src="image/z5n1.jpeg" id="zon5">
+    <div class="section">
+        <h2>Zon 5: Sokongan dan Bantuan</h2>
+        <p>Sumber dan organisasi yang boleh membantu mangsa buli siber.</p>
+        <a href="zon5.html">Tekan sini untuk tau lebih lanjut tentang sokongan dan bantuan</a>
+    </div>
+</body>
+</html>

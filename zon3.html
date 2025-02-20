@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zon 3: Cara Melindungi Diri</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        .quiz-btn {
+            background: #ffcc00;
+            color: black;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .quiz-btn:hover {
+            background: #ffaa00;
+        }
+        video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .backbtn{
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #ff4081;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+        }
+    </style>
+    <button class="backbtn" onclick="history.back()">Go Back</button>
+</head>
+<body>
+    <div class="container">
+        <h1>Zon 3: Cara Melindungi Diri</h1>
+        <h2>Langkah-Langkah Perlindungan</h2>
+        <div class="section">
+            <h3>Menggunakan Tetapan Privasi</h3>
+            <p>Pastikan akaun media sosial anda hanya dapat diakses oleh individu yang dipercayai.</p>
+        </div>
+        <div class="section">
+            <h3>Cara Mengenal Pasti Akaun Palsu</h3>
+            <ul>
+                <li>Tidak menggunakan gambar profil sebenar.</li>
+                <li>Menggunakan nama pelik atau hampir serupa dengan nama terkenal.</li>
+                <li>Menghantar mesej generik kepada ramai orang.</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h3>Teknik Menyekat dan Melaporkan</h3>
+            <p><strong>Cara Menyekat:</strong> Pergi ke profil pengguna, klik tiga titik, pilih "Block".</p>
+            <p><strong>Cara Melaporkan:</strong> Klik tiga titik pada pos atau komen dan pilih "Report".</p>
+        </div>
+        <h2>Video Tutorial</h2>
+        <div class="video-container">
+            <video controls>
+                <source src="video/test.mp4" type="video/mp4">
+                Browser anda tidak menyokong video.
+            </video>
+        </div>
+        <h2>Kuiz Interaktif</h2>
+        <div class="quiz-question">
+            <p>Apakah langkah pertama jika anda menerima ancaman dalam talian?</p>
+            <button class="quiz-btn" onclick="alert('Betul! Laporkan ancaman kepada pihak berkuasa.')">Laporkan</button>
+            <button class="quiz-btn" onclick="alert('Kurang tepat! Mengabaikan ancaman boleh berbahaya.')">Abaikan</button>
+        </div>
+        <div class="quiz-question">
+            <p>Apa tindakan terbaik jika anda melihat rakan anda dibuli?</p>
+            <button class="quiz-btn" onclick="alert('Betul! Memberitahu orang dewasa boleh membantu.')">Beri tahu orang dewasa</button>
+            <button class="quiz-btn" onclick="alert('Kurang tepat! Jangan berdiam diri.')">Jangan campur tangan</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percarian Kata: Anti-Buli</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .game-container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            display: inline-block;
+        }
+        #word-search-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 40px);
+            gap: 2px;
+            justify-content: center;
+            margin: 20px auto;
+        }
+        .grid-cell {
+            width: 40px;
+            height: 40px;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #000;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: white;
+            transition: background 0.3s;
+            border-radius: 5px;
+        }
+        .selected {
+            background-color: yellow;
+        }
+        .found {
+            background-color: lightgreen;
+        }
+        .reset-button {
+            background-color: #007BFF;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .reset-button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .space{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Percarian Kata: Anti-Buli</h1>
+        <p>Cari dan pilih perkataan berkaitan anti-buli dalam kotak ini.</p>
+        <div id="word-search-grid"></div>
+        <table>
+            <tr>
+                <th colspan="5">Senarai Perkataan</th>
+            </tr>
+            <tr>
+                <td>BULI</td>
+                <td>PRIHATIN</td>
+                <td>LAPORAN</td>
+                <td>PEMBULI</td>
+                <td>TOLERANSI</td>
+            </tr>
+            <tr>
+                <td>TAKUT</td>
+                <td>SEKOLAH</td>
+                <td>SIBERBULI</td>
+                <td>EMPATI</td>
+                <td>JAHAT</td>
+            </tr>
+        </table>
+        <div class="space"></div>
+        <button class="reset-button" onclick="resetGame()">Reset Permainan</button>
+    </div>
+
+    <script>
+        const words = ["BULI", "PRIHATIN", "LAPORAN", "PEMBULI", "TOLERANSI", "TAKUT", "SEKOLAH", "SIBERBULI", "EMPATI", "JAHAT"];
+        const gridData = [
+            "TOLERANSIMRK",
+            "OPFDJAHATYNB",
+            "JRGKRGTIGROG",
+            "CIBLAPORANQN",
+            "QHEAPEMBULIN",
+            "RAKMLCJAFWMY",
+            "LTPBPSEKOLAH",
+            "TINHUAGTEMUB",
+            "ANEABLTSJCXV",
+            "KVEONQIINMGS",
+            "UPIPHPYPOYHM",
+            "TQMSIBERBULI"
+        ];
+
+        const gridElement = document.getElementById("word-search-grid");
+        let selectedCells = [];
+
+        gridData.forEach((row, rowIndex) => {
+            row.split("").forEach((letter, colIndex) => {
+                const cell = document.createElement("div");
+                cell.classList.add("grid-cell");
+                cell.textContent = letter;
+                cell.dataset.row = rowIndex;
+                cell.dataset.col = colIndex;
+                cell.addEventListener("click", () => selectCell(cell));
+                gridElement.appendChild(cell);
+            });
+        });
+
+        function selectCell(cell) {
+            if (cell.classList.contains("found")) return;
+            cell.classList.toggle("selected");
+            if (cell.classList.contains("selected")) {
+                selectedCells.push(cell);
+            } else {
+                selectedCells = selectedCells.filter(c => c !== cell);
+            }
+            checkWord();
+        }
+
+        function checkWord() {
+            let selectedWord = selectedCells.map(cell => cell.textContent).join("");
+            if (words.includes(selectedWord)) {
+                selectedCells.forEach(cell => cell.classList.add("found"));
+                selectedCells = [];
+            }
+        }
+
+        function resetGame() {
+            document.querySelectorAll(".grid-cell").forEach(cell => {
+                cell.classList.remove("selected", "found");
+            });
+            selectedCells = [];
+        }
+    </script>
+</body>
+</html>

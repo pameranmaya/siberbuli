@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zon 2: Kesan Siber Buli</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        .video-container {
+            margin: 20px 0;
+        }
+        .quiz-question {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .quiz-btn {
+            background: #ffcc00;
+            color: black;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .quiz-btn:hover {
+            background: #ffaa00;
+        }
+        video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        img {
+            width: 70%;
+            border-radius: 10px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            animation: bounce 1.5s infinite;
+        }
+
+        .backbtn{
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #ff4081;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+        }
+    </style>
+    <button class="backbtn" onclick="history.back()">Go Back</button>
+</head>
+<body>
+    <div class="container">
+        <h1>Zon 2: Kesan Siber Buli</h1>
+        <h2>Bagaimana Siber Buli Mempengaruhi Mangsa?</h2>
+        <div class="section">
+            <center><img src="image/z2n2.jpg" id="zon1"></center>
+            <h3>Kemurungan</h3>
+            <p>Mangsa buli siber lebih cenderung mengalami tekanan perasaan yang berpanjangan dan kehilangan keyakinan diri.</p>
+        </div>
+        <div class="section">
+            <center><img src="image/celaru.webp" id="zon1"></center>
+            <h3>Kecelaruan Emosi</h3>
+            <p>Ramai mangsa mengalami kecelaruan emosi seperti gangguan tidur dan ketakutan yang berpanjangan.</p>
+        </div>
+        <div class="section">
+            <center><img src="image/statistik.jpg" id="zon1"></center>
+            <h3>Peningkatan Kes Bunuh Diri</h3>
+            <p>Menurut kajian, hampir 20% kes bunuh diri remaja dikaitkan dengan buli siber.</p>
+        </div>
+        <h2>Testimoni Mangsa Siber Buli</h2>
+        <div class="video-container">
+            <video controls>
+                <source src="video/test.mp4" type="video/mp4">
+                Browser anda tidak menyokong video.
+            </video>
+        </div>
+        <h2>Jom Teka!</h2>
+        <div class="quiz-question">
+            <p>Jika anda menerima komen negatif dalam talian, apakah tindakan terbaik?</p>
+            <button class="quiz-btn" onclick="alert('Betul! Melaporkan adalah tindakan terbaik.')">Melaporkan</button>
+            <button class="quiz-btn" onclick="alert('Kurang tepat! Balas boleh memperbesarkan keadaan.')">Menjawab balik</button>
+            <button class="quiz-btn" onclick="alert('Tidak digalakkan! Berdiam diri boleh menyebabkan buli berterusan.')">Berdiam diri</button>
+        </div>
+        <div class="quiz-question">
+            <p>Apakah langkah pertama yang perlu diambil jika anda menjadi sasaran buli siber?</p>
+            <button class="quiz-btn" onclick="alert('Betul! Mengumpul bukti boleh membantu jika tindakan lanjut diperlukan.')">Mengumpul bukti</button>
+            <button class="quiz-btn" onclick="alert('Kurang tepat! Mengabaikan tanpa tindakan mungkin memburukkan keadaan.')">Mengabaikan</button>
+            <button class="quiz-btn" onclick="alert('Tidak digalakkan! Membalas dengan marah boleh memperbesarkan konflik.')">Membalas dengan marah</button>
+
+        </div>
+        <div class="quiz-question">
+            <p>Siapakah individu terbaik untuk diminta bantuan jika anda menghadapi gangguan dalam talian?</p>
+            <button class="quiz-btn" onclick="alert('Betul! Ibu bapa atau guru boleh memberi nasihat dan bantuan.')">Ibu bapa atau guru</button>
+            <button class="quiz-btn" onclick="alert('Kurang tepat! Kawan mungkin memahami, tetapi mungkin tidak dapat membantu sepenuhnya.')">Kawan</button>
+            <button class="quiz-btn" onclick="alert('Tidak digalakkan! Berkongsi di media sosial boleh memburukkan keadaan.')">Kongsi di media sosial</button>
+
+        </div>
+        <div class="quiz-question">
+            <p>Apakah kesan jangka panjang buli siber terhadap mangsa?</p>
+            <button class="quiz-btn" onclick="alert('Betul! Buli siber boleh menyebabkan tekanan emosi dan menjejaskan kesihatan mental.')">Tekanan emosi dan kesihatan mental</button>
+            <button class="quiz-btn" onclick="alert('Kurang tepat! Tidak semua orang menjadi lebih kuat selepas dibuli.')">Menjadikan seseorang lebih kuat</button>
+            <button class="quiz-btn" onclick="alert('Salah! Buli siber bukanlah isu kecil yang boleh dilupakan begitu sahaja.')">Tiada kesan jangka panjang</button>
+
+        </div>
+    </div>
+</body>
+</html>
