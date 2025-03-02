@@ -3,31 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zon 1: Apa Itu Siber Buli?</title>
+    <title>Zon 2: Kesan Siber Buli</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Paprika&display=swap');
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            font-family: 'Paprika', fantasy;
+            background: #1C1C1C;
             color: white;
             text-align: center;
             padding: 20px;
             margin: 0;
         }
+        h1,h2,h3{
+            color: #f20b97;
+        }
         .container {
             max-width: 900px;
             margin: auto;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.6);
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
         }
-        .infographic {
+        .section {
             background: rgba(255, 255, 255, 0.2);
             color: white;
             padding: 15px;
             border-radius: 10px;
             text-align: left;
             margin-bottom: 15px;
+        }
+        .video-container {
+            margin: 20px 0;
         }
         .quiz-question {
             margin-top: 20px;
@@ -54,45 +61,87 @@
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
         }
-        ul {
-            text-align: left;
-            padding-left: 20px;
+
+        img {
+            width: 70%;
+            border-radius: 10px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            animation: bounce 1.5s infinite;
         }
-        li {
-            margin-bottom: 10px;
+        .backbtn{
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #ff4081;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+        }
+        button {
+            background: #ffcc00;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #ffaa00;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+        #notification {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 255, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
         }
     </style>
+    <script>
+        function showNotification(message) {
+            let notification = document.getElementById("notification");
+            notification.textContent = message;
+            notification.style.display = "block";
+            setTimeout(() => {
+                notification.style.display = "none";
+            }, 2000);
+        }
+
+        function checkAnswer(button, isCorrect, message) {
+            showNotification(message);
+            button.disabled = true;
+        }
+    </script>
+    <button class="backbtn" onclick="history.back()">Kembali</button>
 </head>
 <body>
     <div class="container">
-        <h1>Zon 1: Apa Itu Siber Buli?</h1>
-        <h2>Definisi Siber Buli</h2>
-        <div class="infographic">
-            <h3>Apa itu siber buli?</h3>
-            <p>Buli siber merujuk kepada penggunaan teknologi digital secara berulang untuk mengganggu, merosakkan reputasi atau menakut-nakutkan seseorang.</p>
-        </div>
-        <div class="infographic">
-            <h3>Statistik Siber Buli</h3>
-            <p><strong>Global:</strong> 1 daripada 3 remaja mengalami buli siber. 58% mangsa mengalami masalah kesihatan mental.</p>
-            <p><strong>Tempatan:</strong> Pada 2021, lebih daripada 1,200 aduan diterima melalui SKMM.</p>
-        </div>
-        <h2>Contoh Situasi Siber Buli</h2>
-        <ul>
-            <li>📸 Penyebaran gambar tanpa izin.</li>
-            <li>💬 Komen menghina di media sosial.</li>
-            <li>🎭 Impersonation - berpura-pura menjadi orang lain untuk memperdaya.</li>
-        </ul>
-        <h2>Video Pendek</h2>
-        <p>Tonton video animasi tentang kesan siber buli.</p>
-        <video controls>
-            <source src="video/siber_buli.mp4" type="video/mp4">
-            Browser anda tidak menyokong video.
-        </video>
-        <h2>Kuiz Interaktif</h2>
+        <h1>Zon 2: Kesan Siber Buli</h1>
+        <div id="notification"></div>
+        <h2>Jom Teka!</h2>
         <div class="quiz-question">
-            <p>Jika seseorang berkongsi meme tentang anda tanpa izin, apakah ini siber buli?</p>
-            <button class="quiz-btn" onclick="alert('Ya, ini adalah bentuk siber buli.')">Ya</button>
-            <button class="quiz-btn" onclick="alert('Tidak, ini bukan siber buli.')">Tidak</button>
+            <p>Jika anda menerima komen negatif dalam talian, apakah tindakan terbaik?</p>
+            <button class="quiz-btn" onclick="checkAnswer(this, true, 'Betul! Melaporkan adalah tindakan terbaik.')">Melaporkan</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false, 'Kurang tepat! Balas boleh memperbesarkan keadaan.')">Menjawab balik</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false, 'Tidak digalakkan! Berdiam diri boleh menyebabkan buli berterusan.')">Berdiam diri</button>
+        </div>
+        <div class="quiz-question">
+            <p>Apakah langkah pertama yang perlu diambil jika anda menjadi sasaran buli siber?</p>
+            <button class="quiz-btn" onclick="checkAnswer(this, true, 'Betul! Mengumpul bukti boleh membantu jika tindakan lanjut diperlukan.')">Mengumpul bukti</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false, 'Kurang tepat! Mengabaikan tanpa tindakan mungkin memburukkan keadaan.')">Mengabaikan</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false, 'Tidak digalakkan! Membalas dengan marah boleh memperbesarkan konflik.')">Membalas dengan marah</button>
+        </div>
+        <div class="quiz-question">
+            <p>Siapakah individu terbaik untuk diminta bantuan jika anda menghadapi gangguan dalam talian?</p>
+            <button class="quiz-btn" onclick="checkAnswer(this, true, 'Betul! Ibu bapa atau guru boleh memberi nasihat dan bantuan.')">Ibu bapa atau guru</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false, 'Kurang tepat! Kawan mungkin memahami, tetapi mungkin tidak dapat membantu sepenuhnya.')">Kawan</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false, 'Tidak digalakkan! Berkongsi di media sosial boleh memburukkan keadaan.')">Kongsi di media sosial</button>
         </div>
     </div>
 </body>
