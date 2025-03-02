@@ -92,6 +92,33 @@
             border: none;
         }
     </style>
+    <script>
+        let score = 0;
+        let totalQuestions = 5;
+
+        function showNotification(message) {
+            let notification = document.getElementById("notification");
+            notification.textContent = message;
+            notification.style.display = "block";
+            setTimeout(() => {
+                notification.style.display = "none";
+            }, 2000);
+        }
+
+        function checkAnswer(isCorrect) {
+            if (isCorrect) {
+                score++;
+                showNotification("Betul!");
+            } else {
+                showNotification("Cuba Lagi!");
+            }
+
+            if (document.querySelectorAll('.quiz-btn[disabled]').length === totalQuestions - 1) {
+                let percentage = (score / totalQuestions) * 100;
+                showNotification(`Anda mendapat ${percentage}% markah!`);
+            }
+        }
+    </script>
     <button class="backbtn" onclick="history.back()">Kembali</button>
 </head>
 <body>
