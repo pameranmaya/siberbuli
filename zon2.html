@@ -91,6 +91,17 @@
             border-radius: 5px;
             border: none;
         }
+        #notification {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 255, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
     </style>
     <script>
         let score = 0;
@@ -105,13 +116,10 @@
             }, 2000);
         }
 
-        function checkAnswer(isCorrect) {
-            if (isCorrect) {
-                score++;
-                showNotification("Betul!");
-            } else {
-                showNotification("Cuba Lagi!");
-            }
+        function checkAnswer(button, isCorrect, message) {
+            showNotification(message);
+            button.disabled = true;
+        }
 
             if (document.querySelectorAll('.quiz-btn[disabled]').length === totalQuestions - 1) {
                 let percentage = (score / totalQuestions) * 100;
@@ -179,10 +187,11 @@
                 Browser anda tidak menyokong video.
             </video>
         </div>
+        <div id="notification"></div>
         <h2>Jom Teka!</h2>
         <div class="quiz-question">
             <p>Jika anda menerima komen negatif dalam talian, apakah tindakan terbaik?</p>
-            <button class="quiz-btn" onclick="alert('Betul! Melaporkan adalah tindakan terbaik.')">Melaporkan</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, true, 'Betul! Melaporkan adalah tindakan terbaik.')">Melaporkan</button>
             <button class="quiz-btn" onclick="alert('Kurang tepat! Balas boleh memperbesarkan keadaan.')">Menjawab balik</button>
             <button class="quiz-btn" onclick="alert('Tidak digalakkan! Berdiam diri boleh menyebabkan buli berterusan.')">Berdiam diri</button>
         </div>
