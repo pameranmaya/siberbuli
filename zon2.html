@@ -34,8 +34,24 @@
             margin-bottom: 15px;
         }
         .video-container {
-            margin: 20px 0;
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
         }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
         .quiz-question {
             margin-top: 20px;
             background: rgba(255, 255, 255, 0.2);
@@ -180,13 +196,14 @@
             <p>Mangsa perlu mendapatkan sokongan psikologi untuk membangunkan semula keyakinan dan harga diri mereka.</p>
             <p>Mangsa memerlukan terapi untuk menangani kesan jangka panjang seperti kemurungan, kecemasan atau trauma.</p>
         </div>
-        <h2>Testimoni Mangsa Siber Buli</h2>
+        <h2>Mangsa Siber Buli</h2>
         <div class="video-container">
-            <video controls>
-                <source src="video/test.mp4" type="video/mp4">
-                Browser anda tidak menyokong video.
-            </video>
+            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/zB5jF0TZmvM?si=ID8ujKMC3V3qOoEM" 
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+            gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
         </div>
+
         <h2>Jom Teka!</h2>
         <div class="quiz-question">
             <p>Jika anda menerima komen negatif dalam talian, apakah tindakan terbaik?</p>
