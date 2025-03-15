@@ -102,6 +102,22 @@
             padding: 10px 20px;
             border-radius: 5px;
         }
+        .download-button {
+            display: inline-block;
+            background: #ff4081;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            font-weight: bold;
+        }
+
+.download-button:hover {
+    background: #e91e63;
+}
+
     </style>
     <script>
         function showNotification(message) {
@@ -131,6 +147,10 @@
             <button class="quiz-btn" onclick="checkAnswer(this, false, 'Kurang tepat! Balas boleh memperbesarkan keadaan.')">Menjawab balik</button>
             <button class="quiz-btn" onclick="checkAnswer(this, false, 'Tidak digalakkan! Berdiam diri boleh menyebabkan buli berterusan.')">Berdiam diri</button>
         </div>
+        <a href="dokumen/pameran-buli.pdf" download="Pameran_Buli.pdf" class="download-button">
+        📄 Muat Turun PDF
+        </a>
+
         <div class="quiz-question">
             <p>Apakah langkah pertama yang perlu diambil jika anda menjadi sasaran buli siber?</p>
             <button class="quiz-btn" onclick="checkAnswer(this, true, 'Betul! Mengumpul bukti boleh membantu jika tindakan lanjut diperlukan.')">Mengumpul bukti</button>
