@@ -1,109 +1,120 @@
 <!DOCTYPE html>
-<html lang="ms">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pameran Maya: Buli Siber</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stacked Cards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            scroll-behavior: smooth;
-        }
-        .header {
-            background: #007BFF;
-            color: white;
-            padding: 20px;
-        }
-        .menu {
-            background: #333;
-            padding: 10px;
-        }
-        .menu a {
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            display: inline-block;
-        }
-        .menu a:hover {
-            background: #555;
-        }
-        .zone {
-            padding: 50px;
-            margin: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        #audio-icon {
-            cursor: pointer;
-            font-size: 24px;
-        }
+      body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: Poppins, sans-serif;
+        background: white;
+      }
+      .stack-area {
+        width: 100%;
+        height: 250vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+      .left {
+        text-align: center;
+        padding: 20px;
+      }
+      .title {
+        font-size: clamp(32px, 5vw, 64px);
+        font-weight: 700;
+      }
+      .sub-title {
+        font-size: clamp(14px, 2vw, 18px);
+        margin-top: 20px;
+      }
+      .sub-title button {
+        font-size: 14px;
+        padding: 12px 24px;
+        background: black;
+        color: white;
+        border-radius: 8mm;
+        border: none;
+        cursor: pointer;
+        margin-top: 15px;
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        width: 100%;
+      }
+      .card {
+        width: 90%;
+        max-width: 350px;
+        height: 350px;
+        border-radius: 25px;
+        position: absolute;
+        transition: 0.5s ease-in-out;
+        padding: 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .card:nth-child(1) { background: rgb(64, 122, 255); }
+      .card:nth-child(2) { background: rgb(221, 62, 88); }
+      .card:nth-child(3) { background: rgb(186, 113, 245); }
+      .card:nth-child(4) { background: rgb(247, 92, 208); }
+      .sub { font-size: 18px; font-weight: 700; }
+      .content { font-size: 32px; font-weight: 700; line-height: 40px; }
+      .away { transform: translateY(-120vh) rotate(-48deg); }
     </style>
-</head>
-<body>
-    <div class="header">
-        <h1>Selamat Datang Ke Pameran Maya: Buli Siber</h1>
-        <h2>"Satu klik boleh menyelamatkan atau melukai"</h2>
-        <span id="audio-icon" onclick="toggleAudio()">🔊</span>
-        <audio id="bg-music" loop>
-            <source src="audio.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+  </head>
+  <body>
+    <div class="stack-area">
+      <div class="left">
+        <div class="title">Our Features</div>
+        <div class="sub-title">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente qui quis, facere, cupiditate, doloremque natus.
+          <br />
+          <button>See More Details</button>
+        </div>
+      </div>
+      <div class="right">
+        <div class="card"><div class="sub">Simplified</div><div class="content">Complex tasks are now simple</div></div>
+        <div class="card"><div class="sub">Boost Productivity</div><div class="content">Perform Tasks in less time</div></div>
+        <div class="card"><div class="sub">Facilitated learning</div><div class="content">Train anyone from anywhere</div></div>
+        <div class="card"><div class="sub">Support</div><div class="content">Now it's 24/7 support</div></div>
+      </div>
     </div>
-    
-    <div class="menu">
-        <a href="#zon1">Zon Pengenalan</a>
-        <a href="#zon2">Zon Jenis Buli Siber</a>
-        <a href="#zon3">Zon Kesan</a>
-        <a href="#zon4">Zon Pencegahan</a>
-        <a href="#zon5">Zon Sokongan</a>
-    </div>
-    
-    <div id="zon1" class="zone">
-        <h2>Zon Pengenalan</h2>
-        <p>Apa itu buli siber? Ketahui lebih lanjut di sini.</p>
-    </div>
-    
-    <div id="zon2" class="zone">
-        <h2>Zon Jenis Buli Siber</h2>
-        <p>Ketahui pelbagai bentuk buli siber yang sering berlaku.</p>
-    </div>
-    
-    <div id="zon3" class="zone">
-        <h2>Zon Kesannya</h2>
-        <p>Bagaimana buli siber memberi kesan kepada mangsa?</p>
-    </div>
-    
-    <div id="zon4" class="zone">
-        <h2>Zon Pencegahan</h2>
-        <p>Langkah-langkah untuk mengelakkan buli siber.</p>
-    </div>
-    
-    <div id="zon5" class="zone">
-        <h2>Zon Sokongan</h2>
-        <p>Dapatkan bantuan dan sokongan sekiranya anda atau rakan anda menjadi mangsa.</p>
-    </div>
-    
     <script>
-        function toggleAudio() {
-            let audio = document.getElementById("bg-music");
-            let icon = document.getElementById("audio-icon");
-            if (audio.paused) {
-                audio.play().catch(error => console.log("Playback failed:", error));
-                icon.textContent = "🔊";
-            } else {
-                audio.pause();
-                icon.textContent = "🔇";
-            }
-        }
+      let cards = document.querySelectorAll(".card");
+      function rotateCards() {
+        let angle = 0;
+        cards.forEach((card, index) => {
+          if (card.classList.contains("away")) {
+            card.style.transform = `translateY(-120vh) rotate(-48deg)`;
+          } else {
+            card.style.transform = `rotate(${angle}deg)`;
+            angle -= 10;
+            card.style.zIndex = cards.length - index;
+          }
+        });
+      }
+      rotateCards();
+      window.addEventListener("scroll", () => {
+        let distance = window.innerHeight * 0.5;
+        let topVal = document.querySelector(".stack-area").getBoundingClientRect().top;
+        let index = Math.floor(-1 * (topVal / distance + 1));
+        cards.forEach((card, i) => {
+          if (i <= index) card.classList.add("away");
+          else card.classList.remove("away");
+        });
+        rotateCards();
+      });
     </script>
-</body>
+  </body>
 </html>
