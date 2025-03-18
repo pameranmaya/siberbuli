@@ -1,80 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ms">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stacked Zones Scroll</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Pameran Maya: Buli Siber</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
+            text-align: center;
             margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: white;
-            overflow-x: hidden;
+            padding: 0;
+            background-color: #f4f4f4;
+            scroll-behavior: smooth;
         }
-        .zone-container {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+        .header {
+            background: #007BFF;
+            color: white;
+            padding: 20px;
+        }
+        .menu {
+            background: #333;
+            padding: 10px;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: inline-block;
+        }
+        .menu a:hover {
+            background: #555;
         }
         .zone {
-            width: 80%;
-            max-width: 500px;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 20px;
-            position: absolute;
-            transition: transform 0.8s ease-in-out;
-            font-size: 24px;
-            font-weight: 600;
-            color: white;
-            text-align: center;
+            padding: 50px;
+            margin: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
-        .zone:nth-child(1) { background: #407AFF; }
-        .zone:nth-child(2) { background: #DD3E58; }
-        .zone:nth-child(3) { background: #BA71F5; }
-        .zone:nth-child(4) { background: #F75CD0; }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        #audio-icon {
+            cursor: pointer;
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
-    <div class="zone-container">
-        <div class="zone">Simplified: Complex tasks are now simple</div>
-        <div class="zone">Boost Productivity: Perform tasks in less time</div>
-        <div class="zone">Facilitated Learning: Train anyone from anywhere</div>
-        <div class="zone">Support: Now it's 24/7 support</div>
+    <div class="header">
+        <h1>Selamat Datang Ke Pameran Maya: Buli Siber</h1>
+        <h2>"Satu klik boleh menyelamatkan atau melukai"</h2>
+        <span id="audio-icon" onclick="toggleAudio()">🔊</span>
+        <audio id="bg-music" loop>
+            <source src="audio.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </div>
+    
+    <div class="menu">
+        <a href="#zon1">Zon Pengenalan</a>
+        <a href="#zon2">Zon Jenis Buli Siber</a>
+        <a href="#zon3">Zon Kesan</a>
+        <a href="#zon4">Zon Pencegahan</a>
+        <a href="#zon5">Zon Sokongan</a>
+    </div>
+    
+    <div id="zon1" class="zone">
+        <h2>Zon Pengenalan</h2>
+        <p>Apa itu buli siber? Ketahui lebih lanjut di sini.</p>
+    </div>
+    
+    <div id="zon2" class="zone">
+        <h2>Zon Jenis Buli Siber</h2>
+        <p>Ketahui pelbagai bentuk buli siber yang sering berlaku.</p>
+    </div>
+    
+    <div id="zon3" class="zone">
+        <h2>Zon Kesannya</h2>
+        <p>Bagaimana buli siber memberi kesan kepada mangsa?</p>
+    </div>
+    
+    <div id="zon4" class="zone">
+        <h2>Zon Pencegahan</h2>
+        <p>Langkah-langkah untuk mengelakkan buli siber.</p>
+    </div>
+    
+    <div id="zon5" class="zone">
+        <h2>Zon Sokongan</h2>
+        <p>Dapatkan bantuan dan sokongan sekiranya anda atau rakan anda menjadi mangsa.</p>
+    </div>
+    
     <script>
-        let zones = document.querySelectorAll(".zone");
-        let currentIndex = 0;
-        
-        function updateZones() {
-            zones.forEach((zone, index) => {
-                if (index === currentIndex) {
-                    zone.style.transform = "translateY(0) scale(1)";
-                } else if (index < currentIndex) {
-                    zone.style.transform = "translateY(-100vh) scale(0.8)";
-                } else {
-                    zone.style.transform = "translateY(100vh) scale(0.8)";
-                }
-            });
-        }
-        
-        window.addEventListener("wheel", (event) => {
-            if (event.deltaY > 0 && currentIndex < zones.length - 1) {
-                currentIndex++;
-            } else if (event.deltaY < 0 && currentIndex > 0) {
-                currentIndex--;
+        function toggleAudio() {
+            let audio = document.getElementById("bg-music");
+            let icon = document.getElementById("audio-icon");
+            if (audio.paused) {
+                audio.play().catch(error => console.log("Playback failed:", error));
+                icon.textContent = "🔊";
+            } else {
+                audio.pause();
+                icon.textContent = "🔇";
             }
-            updateZones();
-        });
-        
-        updateZones();
+        }
     </script>
 </body>
 </html>
