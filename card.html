@@ -1,120 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stacked Cards</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stacked Zones Scroll</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-      body {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        font-family: Poppins, sans-serif;
-        background: white;
-      }
-      .stack-area {
-        width: 100%;
-        height: 250vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-      }
-      .left {
-        text-align: center;
-        padding: 20px;
-      }
-      .title {
-        font-size: clamp(32px, 5vw, 64px);
-        font-weight: 700;
-      }
-      .sub-title {
-        font-size: clamp(14px, 2vw, 18px);
-        margin-top: 20px;
-      }
-      .sub-title button {
-        font-size: 14px;
-        padding: 12px 24px;
-        background: black;
-        color: white;
-        border-radius: 8mm;
-        border: none;
-        cursor: pointer;
-        margin-top: 15px;
-      }
-      .right {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-        width: 100%;
-      }
-      .card {
-        width: 90%;
-        max-width: 350px;
-        height: 350px;
-        border-radius: 25px;
-        position: absolute;
-        transition: 0.5s ease-in-out;
-        padding: 35px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-      .card:nth-child(1) { background: rgb(64, 122, 255); }
-      .card:nth-child(2) { background: rgb(221, 62, 88); }
-      .card:nth-child(3) { background: rgb(186, 113, 245); }
-      .card:nth-child(4) { background: rgb(247, 92, 208); }
-      .sub { font-size: 18px; font-weight: 700; }
-      .content { font-size: 32px; font-weight: 700; line-height: 40px; }
-      .away { transform: translateY(-120vh) rotate(-48deg); }
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: white;
+            overflow-x: hidden;
+        }
+        .zone-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .zone {
+            width: 80%;
+            max-width: 500px;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            position: absolute;
+            transition: transform 0.8s ease-in-out;
+            font-size: 24px;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+        }
+        .zone:nth-child(1) { background: #407AFF; }
+        .zone:nth-child(2) { background: #DD3E58; }
+        .zone:nth-child(3) { background: #BA71F5; }
+        .zone:nth-child(4) { background: #F75CD0; }
     </style>
-  </head>
-  <body>
-    <div class="stack-area">
-      <div class="left">
-        <div class="title">Our Features</div>
-        <div class="sub-title">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente qui quis, facere, cupiditate, doloremque natus.
-          <br />
-          <button>See More Details</button>
-        </div>
-      </div>
-      <div class="right">
-        <div class="card"><div class="sub">Simplified</div><div class="content">Complex tasks are now simple</div></div>
-        <div class="card"><div class="sub">Boost Productivity</div><div class="content">Perform Tasks in less time</div></div>
-        <div class="card"><div class="sub">Facilitated learning</div><div class="content">Train anyone from anywhere</div></div>
-        <div class="card"><div class="sub">Support</div><div class="content">Now it's 24/7 support</div></div>
-      </div>
+</head>
+<body>
+    <div class="zone-container">
+        <div class="zone">Simplified: Complex tasks are now simple</div>
+        <div class="zone">Boost Productivity: Perform tasks in less time</div>
+        <div class="zone">Facilitated Learning: Train anyone from anywhere</div>
+        <div class="zone">Support: Now it's 24/7 support</div>
     </div>
     <script>
-      let cards = document.querySelectorAll(".card");
-      function rotateCards() {
-        let angle = 0;
-        cards.forEach((card, index) => {
-          if (card.classList.contains("away")) {
-            card.style.transform = `translateY(-120vh) rotate(-48deg)`;
-          } else {
-            card.style.transform = `rotate(${angle}deg)`;
-            angle -= 10;
-            card.style.zIndex = cards.length - index;
-          }
+        let zones = document.querySelectorAll(".zone");
+        let currentIndex = 0;
+        
+        function updateZones() {
+            zones.forEach((zone, index) => {
+                if (index === currentIndex) {
+                    zone.style.transform = "translateY(0) scale(1)";
+                } else if (index < currentIndex) {
+                    zone.style.transform = "translateY(-100vh) scale(0.8)";
+                } else {
+                    zone.style.transform = "translateY(100vh) scale(0.8)";
+                }
+            });
+        }
+        
+        window.addEventListener("wheel", (event) => {
+            if (event.deltaY > 0 && currentIndex < zones.length - 1) {
+                currentIndex++;
+            } else if (event.deltaY < 0 && currentIndex > 0) {
+                currentIndex--;
+            }
+            updateZones();
         });
-      }
-      rotateCards();
-      window.addEventListener("scroll", () => {
-        let distance = window.innerHeight * 0.5;
-        let topVal = document.querySelector(".stack-area").getBoundingClientRect().top;
-        let index = Math.floor(-1 * (topVal / distance + 1));
-        cards.forEach((card, i) => {
-          if (i <= index) card.classList.add("away");
-          else card.classList.remove("away");
-        });
-        rotateCards();
-      });
+        
+        updateZones();
     </script>
-  </body>
+</body>
 </html>
